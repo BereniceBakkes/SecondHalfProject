@@ -399,7 +399,7 @@ a {
 .who-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 100px;
+    gap: 30px;
     margin-bottom: 80px;
     max-width: 900px;
     width: 100%;
