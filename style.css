@@ -56,12 +56,25 @@ a {
 
 .nav-link {
     color: #333;
-    font-weight: 500;
-    transition: color 0.3s ease;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 1.05rem;
+    padding: 10px 18px;
+    border-radius: 6px;
+    position: relative;
+    display: inline-block;
 }
 
 .nav-link:hover {
     color: #1a7c7d;
+    background-color: rgba(26, 124, 125, 0.08);
+    transform: translateY(-2px);
+}
+
+.nav-link.active {
+    color: #1a7c7d;
+    background-color: rgba(26, 124, 125, 0.12);
+    border-bottom: 2px solid #1a7c7d;
 }
 
 .search-box {
@@ -304,6 +317,303 @@ a {
     font-weight: 700;
 }
 
+/* About Section */
+.about-section {
+    padding: 40px 20px;
+    background-color: #e8e8e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-title {
+    font-size: 2.8rem;
+    color: #1a7c7d;
+    margin-bottom: 60px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.about-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 40px;
+    line-height: 1.8;
+}
+
+.about-content p:last-child {
+    margin-bottom: 0;
+}
+
+.highlight-brand {
+    font-style: italic;
+}
+
+/* Who Section */
+.who-section {
+    padding: 80px 20px;
+    background-color: #e8e8e8;
+}
+
+.who-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.who-title {
+    font-size: 2.8rem;
+    color: #1a7c7d;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+}
+
+.who-intro {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 60px;
+    text-align: center;
+    font-weight: 500;
+    width: 100%;
+}
+
+.who-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 100px;
+    margin-bottom: 80px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.who-column {
+    text-align: left;
+}
+
+.who-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.who-list li {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 20px;
+    padding-left: 24px;
+    position: relative;
+    line-height: 1.6;
+}
+
+.who-list li:before {
+    content: "\2022";
+    position: absolute;
+    left: 0;
+    color: #1a7c7d;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.who-benefit {
+    font-size: 1.15rem;
+    color: #1a7c7d;
+    margin-bottom: 70px;
+    text-align: center;
+    line-height: 1.8;
+    max-width: 800px;
+    width: 100%;
+}
+
+.who-cta {
+    text-align: center;
+    width: 100%;
+}
+
+/* Program Section */
+.program-section {
+    padding: 40px 20px;
+    background-color: #e8e8e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.program-title {
+    font-size: 2.8rem;
+    color: #1a7c7d;
+    margin-bottom: 60px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.program-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.program-content p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 40px;
+    line-height: 1.8;
+}
+
+.program-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Included Section */
+.included-section {
+    padding: 20px 20px;
+    background-color: #e8e8e8;
+}
+
+.included-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.included-title {
+    font-size: 2.8rem;
+    color: #1a7c7d;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+}
+
+.included-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 100px;
+    margin-bottom: 20px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.included-column {
+    text-align: left;
+}
+
+.included-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.included-list li {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 20px;
+    padding-left: 24px;
+    position: relative;
+    line-height: 1.6;
+}
+
+.included-list li:before {
+    content: "\2022";
+    position: absolute;
+    left: 0;
+    color: #1a7c7d;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* FAQ Section */
+.faq-section {
+    padding: 20px 20px;
+    background-color: #e8e8e8;
+}
+
+.faq-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.faq-title {
+    font-size: 2.8rem;
+    color: #1a7c7d;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+}
+
+.faq-container {
+    width: 100%;
+    max-width: 900px;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    overflow: hidden;
+}
+
+.faq-header {
+    width: 100%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.faq-header:hover {
+    background-color: #f0f0f0;
+}
+
+.faq-icon {
+    color: #1a7c7d;
+    font-size: 1.5rem;
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.faq-question {
+    color: #1a7c7d;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-item.active .faq-content {
+    max-height: 500px;
+}
+
+.faq-content p {
+    padding: 0 20px 20px 20px;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.8;
+    margin: 0;
+}
+
 /* Old Approach Section */
 .approach {
     padding: 80px 20px;
@@ -426,7 +736,8 @@ a {
     }
 
     .nav-link {
-        font-size: 0.95rem;
+        font-size: 1rem;
+        padding: 8px 14px;
     }
 
     .search-box {
@@ -490,6 +801,72 @@ a {
 
     .why-highlight {
         font-size: 1.1rem;
+    }
+
+    .about-title {
+        font-size: 1.8rem;
+    }
+
+    .about-content p {
+        font-size: 1rem;
+    }
+
+    .who-title {
+        font-size: 1.8rem;
+    }
+
+    .who-intro {
+        font-size: 1rem;
+    }
+
+    .who-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-bottom: 60px;
+    }
+
+    .who-benefit {
+        font-size: 1rem;
+        margin-bottom: 40px;
+    }
+
+    .program-title {
+        font-size: 1.8rem;
+    }
+
+    .program-content p {
+        font-size: 1rem;
+    }
+
+    .included-title {
+        font-size: 1.8rem;
+    }
+
+    .included-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-bottom: 20px;
+    }
+
+    .included-list li {
+        font-size: 0.95rem;
+    }
+
+    .faq-title {
+        font-size: 1.8rem;
+    }
+
+    .faq-header {
+        padding: 16px;
+    }
+
+    .faq-question {
+        font-size: 0.95rem;
+    }
+
+    .faq-content p {
+        font-size: 0.95rem;
+        padding: 0 16px 16px 16px;
     }
 
     .footer-content {
