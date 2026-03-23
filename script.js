@@ -4,6 +4,14 @@ const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-link');
 const currentPageSpan = document.getElementById('currentPage');
 
+// Set initial current page based on active link
+if (currentPageSpan) {
+    const activeLink = document.querySelector('.nav-link.active');
+    if (activeLink) {
+        currentPageSpan.textContent = activeLink.textContent;
+    }
+}
+
 if (hamburger) {
     hamburger.addEventListener('click', () => {
         navMenu.classList.toggle('active');

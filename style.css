@@ -88,6 +88,14 @@ a {
     border-bottom: 2px solid #1a7c7d;
 }
 
+.hamburger {
+    display: none;
+}
+
+.nav-mobile-right {
+    display: none;
+}
+
 .search-box {
     display: flex;
 }
@@ -977,7 +985,7 @@ a {
 .nav-mobile-right {
     display: none;
     align-items: center;
-    gap: 15px;
+    gap: 25px;
 }
 
 .current-page {
