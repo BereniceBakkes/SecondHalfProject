@@ -2,6 +2,7 @@
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-link');
+const currentPageSpan = document.getElementById('currentPage');
 
 if (hamburger) {
     hamburger.addEventListener('click', () => {
@@ -14,6 +15,10 @@ if (hamburger) {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
             hamburger.classList.remove('active');
+            // Update current page display
+            if (currentPageSpan) {
+                currentPageSpan.textContent = link.textContent;
+            }
         });
     });
 

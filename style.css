@@ -974,9 +974,26 @@ a {
     transform: rotate(-45deg) translate(8px, -8px);
 }
 
+.nav-mobile-right {
+    display: none;
+    align-items: center;
+    gap: 15px;
+}
+
+.current-page {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1a7c7d;
+    white-space: nowrap;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hamburger {
+        display: flex;
+    }
+
+    .nav-mobile-right {
         display: flex;
     }
 
@@ -998,7 +1015,6 @@ a {
     }
 
     .hamburger {
-        order: 2;
         flex-shrink: 0;
     }
 
