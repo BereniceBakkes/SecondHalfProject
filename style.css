@@ -416,16 +416,17 @@ a {
 }
 
 .who-list li {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: #333;
     margin-bottom: 20px;
-    padding-left: 24px;
+    padding-left: 0;
     position: relative;
     line-height: 1.6;
+    font-weight: 600;
 }
 
 .who-list li:before {
-    content: "\2022";
+    content: "";
     position: absolute;
     left: 0;
     color: #1a7c7d;
