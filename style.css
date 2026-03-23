@@ -981,29 +981,35 @@ a {
     }
 
     .nav-container {
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         gap: 0;
         padding: 15px 10px;
         justify-content: space-between;
+        align-items: center;
+        position: relative;
     }
 
     .logo {
-        order: 1;
         flex: 1;
+    }
+
+    .logo img {
+        height: 60px;
     }
 
     .hamburger {
         order: 2;
+        flex-shrink: 0;
     }
 
     .nav-menu {
-        order: 3;
-        width: 100%;
         position: absolute;
         top: 100%;
         left: 0;
         right: 0;
+        width: 100%;
         background-color: #fff;
+        display: flex;
         flex-direction: column;
         gap: 0;
         justify-content: flex-start;
@@ -1012,11 +1018,11 @@ a {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     }
 
     .nav-menu.active {
-        max-height: 300px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        max-height: 400px;
     }
 
     .nav-link {
@@ -1027,6 +1033,7 @@ a {
         display: block;
         text-align: left;
         transition: background-color 0.3s ease;
+        width: 100%;
     }
 
     .nav-link:hover {
@@ -1036,7 +1043,8 @@ a {
 
     .nav-link.active {
         background-color: rgba(26, 124, 125, 0.12);
-        border-bottom: 1px solid #eee;
+        border-left: 4px solid #1a7c7d;
+        padding-left: 16px;
     }
 
     .navbar {
@@ -1045,21 +1053,8 @@ a {
         z-index: 100;
     }
 
-    .nav-container {
-        position: relative;
-    }
-
-    .logo img {
-        height: 60px;
-    }
-
     .search-box {
-        order: 2;
         display: none;
-    }
-
-    .search-box input {
-        width: 150px;
     }
 
     .btn {
