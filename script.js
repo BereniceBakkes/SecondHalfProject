@@ -5,12 +5,18 @@ const navLinks = document.querySelectorAll('.nav-link');
 const currentPageSpan = document.getElementById('currentPage');
 
 // Set initial current page based on active link
-if (currentPageSpan) {
-    const activeLink = document.querySelector('.nav-link.active');
-    if (activeLink) {
-        currentPageSpan.textContent = activeLink.textContent;
+function initializeCurrentPage() {
+    if (currentPageSpan) {
+        const activeLink = document.querySelector('.nav-link.active');
+        if (activeLink) {
+            const pageText = activeLink.textContent.trim();
+            currentPageSpan.textContent = pageText;
+        }
     }
 }
+
+// Initialize on page load
+initializeCurrentPage();
 
 if (hamburger) {
     hamburger.addEventListener('click', () => {
@@ -24,8 +30,9 @@ if (hamburger) {
             navMenu.classList.remove('active');
             hamburger.classList.remove('active');
             // Update current page display
+            const pageText = link.textContent.trim();
             if (currentPageSpan) {
-                currentPageSpan.textContent = link.textContent;
+                currentPageSpan.textContent = pageText;
             }
         });
     });

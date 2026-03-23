@@ -989,8 +989,8 @@ a {
 }
 
 .current-page {
-    font-size: 0.95rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 700;
     color: #1a7c7d;
     white-space: nowrap;
 }
