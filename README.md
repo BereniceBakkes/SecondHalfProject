@@ -100,4 +100,4 @@ Designed by Estian Pretorius (https://estianp.github.io)
 
 ## License
 
-(c) 2026 Second Half Project. All rights reserved.
+(c) 2026 The Second Half Project. All rights reserved.
