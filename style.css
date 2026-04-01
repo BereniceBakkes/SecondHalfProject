@@ -277,19 +277,20 @@ a {
 
 .approach-card {
     text-align: center;
-    border: 2px solid #2c3e50;
-    padding: 20px 15px;
-    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 40px 30px;
+    border-radius: 12px;
     transition: all 0.3s ease;
-    background-color: transparent;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .approach-card:hover {
     background-color: #fff;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(26, 124, 125, 0.15);
+    transform: translateY(-8px);
     border-color: #1a7c7d;
 }
 
@@ -395,10 +396,38 @@ a {
     margin-right: auto;
 }
 
-.about-content {
-    max-width: 700px;
-    margin: 0 auto;
+.about-wrapper {
+    display: block;
+}
+
+.about-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    float: left;
+    margin-right: 40px;
+    margin-bottom: 20px;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    width: 450px;
+}
+
+.coach-name {
+    font-size: 1.1rem;
+    color: #1a7c7d;
+    font-weight: 600;
     text-align: center;
+    letter-spacing: 1px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.about-content {
+    text-align: left;
 }
 
 .about-content p {
@@ -420,7 +449,7 @@ a {
 /* Who Section */
 .who-section {
     padding: 30px 20px 80px 20px;
-    background-color: #f5f5f5;
+    background-color: #e8e8e8;
 }
 
 .who-section .container {
@@ -512,13 +541,85 @@ a {
     width: 100%;
 }
 
+/* Philosophy Section */
+.philosophy-section {
+    padding: 80px 20px;
+    background-color: #f5f5f5;
+}
+
+.philosophy-section .container {
+    max-width: 900px;
+}
+
+.philosophy-title {
+    font-size: 2.8rem;
+    color: #2c3e50;
+    margin-bottom: 45px;
+    font-weight: 400;
+    text-align: center;
+    font-family: 'Georgia', 'Garamond', serif;
+    letter-spacing: -0.5px;
+}
+
+.philosophy-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.philosophy-content p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 1.8;
+    font-family: 'Georgia', 'Garamond', serif;
+}
+
+.philosophy-principles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin: 50px 0;
+    text-align: center;
+}
+
+.principle {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.principle:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.principle h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 400;
+    font-family: 'Georgia', 'Garamond', serif;
+    letter-spacing: -0.5px;
+}
+
+.principle p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.8;
+}
+
 /* Program Section */
 .program-section {
-    padding: 30px 20px;
+    padding: 80px 20px;
     background-color: #e8e8e8;
+}
+
+.program-section .container {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
 
 .program-title {
@@ -529,15 +630,17 @@ a {
     text-align: center;
     font-family: 'Georgia', 'Garamond', serif;
     letter-spacing: -0.5px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+}
+
+.program-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
 }
 
 .program-content {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
+    text-align: left;
 }
 
 .program-content p {
@@ -550,6 +653,19 @@ a {
 
 .program-content p:last-child {
     margin-bottom: 0;
+}
+
+.program-image {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.program-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    border-radius: 8px;
 }
 
 /* Included Section */
@@ -567,6 +683,7 @@ a {
 .included-title {
     font-size: 2.8rem;
     color: #1a7c7d;
+    padding: 20px 20px;
     margin-bottom: 30px;
     font-weight: 400;
     text-align: center;
@@ -599,21 +716,19 @@ a {
 }
 
 .included-list li {
-    font-size: 1.15rem;
-    color: #333;
-    padding-left: 0;
+    font-size: 1.1rem;
+    color: #2c3e50;
     position: relative;
-    line-height: 1.6;
-    font-weight: 400;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.8;
+    font-weight: 600;
+    font-family: 'Georgia', 'Garamond', serif;
 }
 
 .included-list li:before {
-    content: "";
     position: absolute;
     left: 0;
     color: #1a7c7d;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: bold;
 }
 
