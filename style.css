@@ -388,12 +388,12 @@ a {
     color: #1a7c7d;
     margin-bottom: 45px;
     font-weight: 400;
-    text-align: center;
+    text-align: left;
     font-family: 'Georgia', 'Garamond', serif;
     letter-spacing: -0.5px;
-    max-width: 700px;
+    max-width: 50%;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: 0;
 }
 
 .about-wrapper {
@@ -423,7 +423,7 @@ a {
     font-weight: 600;
     text-align: center;
     letter-spacing: 1px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: 'Georgia', 'Garamond', serif;
 }
 
 .about-content {
@@ -630,6 +630,9 @@ a {
     text-align: center;
     font-family: 'Georgia', 'Garamond', serif;
     letter-spacing: -0.5px;
+    max-width: 50%;
+    margin-left: 0;
+    margin-right: auto;
 }
 
 .program-wrapper {
