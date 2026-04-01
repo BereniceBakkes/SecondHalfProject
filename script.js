@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '.hero-content h1, .hero-content h2, .hero-content p, .btn, ' +
         '.approach-card, .approach-icon, .approach-title, ' +
         '.pillar, .principle, ' +
-        '.about-wrapper, .about-title, .about-image, .about-content, ' +
+        '.about-wrapper, .about-title, .about-image, .about-content, .coach-name, ' +
         '.program-title, .program-content, .program-image, ' +
         '.included-title, .included-list li, ' +
         '.faq-title, .faq-container, .faq-item, ' +
