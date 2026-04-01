@@ -1142,6 +1142,24 @@ a {
     margin-bottom: 45px;
 }
 
+.google-form-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 45px auto;
+    padding: 0;
+    opacity: 0;
+}
+
+.google-form-container.animate-in {
+    animation: fadeIn 0.8s ease-out 0.4s forwards;
+}
+
+.google-form-container iframe {
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+}
+
 .apply-info {
     margin-top: 45px;
 }

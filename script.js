@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '.who-title, .who-intro, ' +
         '.philosophy-title, .philosophy-content, ' +
         '.why-title, .why-description, .why-highlight, ' +
-        '.apply-title, .apply-content, ' +
+        '.apply-title, .apply-content, .google-form-container, ' +
         '.contact-title, .contact-card'
     );
 
