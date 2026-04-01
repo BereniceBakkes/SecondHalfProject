@@ -45,3 +45,40 @@ if (hamburger) {
         }
     });
 }
+
+// Scroll-triggered animations using Intersection Observer
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observe all elements with animation classes
+document.addEventListener('DOMContentLoaded', () => {
+    const animatedElements = document.querySelectorAll(
+        '.hero-content h1, .hero-content h2, .hero-content p, .btn, ' +
+        '.approach-card, .approach-icon, .approach-title, ' +
+        '.pillar, .principle, ' +
+        '.about-wrapper, .about-title, .about-image, .about-content, ' +
+        '.program-title, .program-content, .program-image, ' +
+        '.included-title, .included-list li, ' +
+        '.faq-title, .faq-container, .faq-item, ' +
+        '.who-title, .who-intro, ' +
+        '.philosophy-title, .philosophy-content, ' +
+        '.why-title, .why-description, .why-highlight, ' +
+        '.apply-title, .apply-content, ' +
+        '.contact-title, .contact-card'
+    );
+
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
+});

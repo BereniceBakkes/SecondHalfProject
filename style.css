@@ -7,6 +7,7 @@
 
 html {
     height: 100%;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -32,6 +33,80 @@ a {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
 }
 
 /* Navigation */
@@ -132,6 +207,12 @@ a {
     line-height: 1.2;
     font-family: 'Georgia', 'Garamond', serif;
     letter-spacing: -0.5px;
+    opacity: 0;
+    transform: translateY(-30px);
+}
+
+.hero-content h1.animate-in {
+    animation: slideInDown 0.8s ease-out forwards;
 }
 
 .hero-content h2 {
@@ -146,6 +227,12 @@ a {
     margin-left: auto;
     margin-right: auto;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.hero-content h2.animate-in {
+    animation: slideInUp 0.8s ease-out 0.1s forwards;
 }
 
 .hero-content h2.hero-subtitle {
@@ -161,6 +248,12 @@ a {
     margin-left: auto;
     margin-right: auto;
     font-family: 'Georgia', 'Garamond', serif;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.hero-content p.animate-in {
+    animation: slideInUp 0.8s ease-out 0.2s forwards;
 }
 
 /* Buttons */
@@ -173,6 +266,12 @@ a {
     cursor: pointer;
     border: none;
     font-size: 1.1rem;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.btn.animate-in {
+    animation: slideInUp 0.8s ease-out 0.3s forwards;
 }
 
 .btn-primary {
@@ -225,6 +324,12 @@ a {
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.pillar.animate-in {
+    animation: scaleIn 0.6s ease-out forwards;
 }
 
 .pillar:hover {
@@ -264,6 +369,12 @@ a {
     font-weight: 400;
     font-family: 'Georgia', 'Garamond', serif;
     letter-spacing: -0.5px;
+    opacity: 0;
+    transform: translateY(-30px);
+}
+
+.approach-title.animate-in {
+    animation: slideInDown 0.8s ease-out forwards;
 }
 
 .approach-grid {
@@ -286,6 +397,12 @@ a {
     display: flex;
     flex-direction: column;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.approach-card.animate-in {
+    animation: scaleIn 0.6s ease-out forwards;
 }
 
 .approach-card:hover {
@@ -324,6 +441,12 @@ a {
     height: 80px;
     margin: 0 auto 1rem auto;
     object-fit: contain;
+    opacity: 0;
+    transform: translateY(-30px);
+}
+
+.approach-icon.animate-in {
+    animation: slideInDown 0.6s ease-out forwards;
 }
 
 .approach-cta {
@@ -344,6 +467,12 @@ a {
     font-weight: 400;
     font-family: 'Georgia', 'Garamond', serif;
     letter-spacing: -0.5px;
+    opacity: 0;
+    transform: translateY(-30px);
+}
+
+.why-title.animate-in {
+    animation: slideInDown 0.8s ease-out forwards;
 }
 
 .why-description {
@@ -355,6 +484,12 @@ a {
     margin-left: auto;
     margin-right: auto;
     font-family: 'Georgia', 'Garamond', serif;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.why-description.animate-in {
+    animation: slideInUp 0.8s ease-out 0.2s forwards;
 }
 
 .why-highlight {
@@ -364,6 +499,12 @@ a {
     line-height: 1.8;
     font-family: 'Georgia', 'Garamond', serif;
     margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.why-highlight.animate-in {
+    animation: slideInUp 0.8s ease-out 0.4s forwards;
 }
 
 .why-cta {
@@ -393,10 +534,21 @@ a {
     font-family: 'Georgia', 'Garamond', serif;
     letter-spacing: -0.5px;
     margin-left: 490px;
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+.about-title.animate-in {
+    animation: slideInLeft 0.8s ease-out forwards;
 }
 
 .about-wrapper {
     display: block;
+    opacity: 0;
+}
+
+.about-wrapper.animate-in {
+    animation: fadeIn 0.8s ease-out forwards;
 }
 
 .about-image {
@@ -406,6 +558,12 @@ a {
     float: left;
     margin-right: 40px;
     margin-bottom: 20px;
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+.about-image.animate-in {
+    animation: slideInLeft 0.8s ease-out forwards;
 }
 
 .about-image img {
@@ -423,10 +581,22 @@ a {
     text-align: center;
     letter-spacing: 1px;
     font-family: 'Georgia', 'Garamond', serif;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.coach-name.animate-in {
+    animation: slideInUp 0.6s ease-out 0.2s forwards;
 }
 
 .about-content {
     text-align: left;
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+.about-content.animate-in {
+    animation: slideInRight 0.8s ease-out forwards;
 }
 
 .about-content p {
@@ -466,6 +636,12 @@ a {
     width: 100%;
     font-family: 'Georgia', 'Garamond', serif;
     letter-spacing: -0.5px;
+    opacity: 0;
+    transform: translateY(-30px);
+}
+
+.who-title.animate-in {
+    animation: slideInDown 0.8s ease-out forwards;
 }
 
 .who-intro {
@@ -476,6 +652,11 @@ a {
     font-weight: 400;
     width: 100%;
     font-family: 'Georgia', 'Garamond', serif;
+    opacity: 0;
+}
+
+.who-intro.animate-in {
+    animation: fadeIn 0.8s ease-out 0.2s forwards;
 }
 
 .who-grid {
@@ -558,12 +739,23 @@ a {
     text-align: center;
     font-family: 'Georgia', 'Garamond', serif;
     letter-spacing: -0.5px;
+    opacity: 0;
+    transform: translateY(-30px);
+}
+
+.philosophy-title.animate-in {
+    animation: slideInDown 0.8s ease-out forwards;
 }
 
 .philosophy-content {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
+    opacity: 0;
+}
+
+.philosophy-content.animate-in {
+    animation: fadeIn 0.8s ease-out 0.2s forwards;
 }
 
 .philosophy-content p {
@@ -588,6 +780,12 @@ a {
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.principle.animate-in {
+    animation: scaleIn 0.6s ease-out forwards;
 }
 
 .principle:hover {
@@ -632,6 +830,12 @@ a {
     max-width: 50%;
     margin-left: 0;
     margin-right: auto;
+    opacity: 0;
+    transform: translateY(-30px);
+}
+
+.program-title.animate-in {
+    animation: slideInDown 0.8s ease-out forwards;
 }
 
 .program-wrapper {
@@ -643,6 +847,12 @@ a {
 
 .program-content {
     text-align: left;
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+.program-content.animate-in {
+    animation: slideInLeft 0.8s ease-out 0.2s forwards;
 }
 
 .program-content p {
@@ -661,6 +871,12 @@ a {
     display: flex;
     justify-content: center;
     align-items: stretch;
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+.program-image.animate-in {
+    animation: slideInRight 0.8s ease-out 0.2s forwards;
 }
 
 .program-image img {
@@ -692,6 +908,12 @@ a {
     width: 100%;
     font-family: 'Georgia', 'Garamond', serif;
     letter-spacing: -0.5px;
+    opacity: 0;
+    transform: translateY(-30px);
+}
+
+.included-title.animate-in {
+    animation: slideInDown 0.8s ease-out forwards;
 }
 
 .included-grid {
@@ -724,6 +946,12 @@ a {
     line-height: 1.8;
     font-weight: 600;
     font-family: 'Georgia', 'Garamond', serif;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.included-list li.animate-in {
+    animation: slideInUp 0.6s ease-out forwards;
 }
 
 .included-list li:before {
@@ -755,11 +983,22 @@ a {
     width: 100%;
     font-family: 'Georgia', 'Garamond', serif;
     letter-spacing: -0.5px;
+    opacity: 0;
+    transform: translateY(-30px);
+}
+
+.faq-title.animate-in {
+    animation: slideInDown 0.8s ease-out forwards;
 }
 
 .faq-container {
     width: 100%;
     max-width: 900px;
+    opacity: 0;
+}
+
+.faq-container.animate-in {
+    animation: fadeIn 0.8s ease-out 0.2s forwards;
 }
 
 .faq-item {
@@ -768,6 +1007,12 @@ a {
     border-radius: 4px;
     background-color: #f9f9f9;
     overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.faq-item.animate-in {
+    animation: slideInUp 0.6s ease-out forwards;
 }
 
 .faq-header {
@@ -851,12 +1096,23 @@ a {
     text-align: center;
     font-family: 'Georgia', 'Garamond', serif;
     letter-spacing: -0.5px;
+    opacity: 0;
+    transform: translateY(-30px);
+}
+
+.apply-title.animate-in {
+    animation: slideInDown 0.8s ease-out forwards;
 }
 
 .apply-content {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
+    opacity: 0;
+}
+
+.apply-content.animate-in {
+    animation: fadeIn 0.8s ease-out 0.2s forwards;
 }
 
 .apply-intro {
@@ -919,6 +1175,12 @@ a {
     text-align: center;
     font-family: 'Georgia', 'Garamond', serif;
     letter-spacing: -0.5px;
+    opacity: 0;
+    transform: translateY(-30px);
+}
+
+.contact-title.animate-in {
+    animation: slideInDown 0.8s ease-out forwards;
 }
 
 .contact-intro {
@@ -956,6 +1218,12 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.contact-card.animate-in {
+    animation: scaleIn 0.6s ease-out forwards;
 }
 
 .contact-card:hover {
