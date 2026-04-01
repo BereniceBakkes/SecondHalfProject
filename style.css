@@ -1634,6 +1634,11 @@ a {
         font-size: 1rem;
     }
 
+    .who-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
     .program-title {
         font-size: 1.8rem;
         max-width: 100%;
