@@ -86,8 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
 // Multi-page Form Handler
 let currentPage = 1;
 const totalPages = 4;
+let isInitialLoad = true;
 
-function showPage(pageNum) {
+function showPage(pageNum, shouldScroll = false) {
     // Hide all pages
     document.querySelectorAll('.form-page').forEach(page => {
         page.classList.remove('active');
@@ -118,8 +119,10 @@ function showPage(pageNum) {
         submitBtn.style.display = 'none';
     }
 
-    // Scroll to top of form
-    document.querySelector('.form-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Scroll to top of form (only when navigating, not on initial load)
+    if (shouldScroll) {
+        document.querySelector('.form-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 }
 
 function updateProgressTracker(pageNum) {
@@ -143,7 +146,7 @@ function nextPage() {
     if (validatePage(currentPage)) {
         if (currentPage < totalPages) {
             currentPage++;
-            showPage(currentPage);
+            showPage(currentPage, true);
         }
     }
 }
@@ -151,14 +154,14 @@ function nextPage() {
 function previousPage() {
     if (currentPage > 1) {
         currentPage--;
-        showPage(currentPage);
+        showPage(currentPage, true);
     }
 }
 
 function goToPage(pageNum) {
     if (pageNum >= 1 && pageNum <= totalPages) {
         currentPage = pageNum;
-        showPage(currentPage);
+        showPage(currentPage, true);
     }
 }
 

@@ -1875,7 +1875,7 @@ a {
 /* Progress Tracker */
 .progress-tracker {
     background: linear-gradient(135deg, rgba(26, 124, 125, 0.05) 0%, rgba(26, 124, 125, 0.02) 100%);
-    padding: 30px 20px;
+    padding: 20px 15px;
     margin-bottom: 0;
 }
 
@@ -1899,12 +1899,12 @@ a {
 .progress-steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 10px;
 }
 
 .step {
     text-align: center;
-    padding: 15px;
+    padding: 10px 5px;
     position: relative;
     transition: all 0.3s ease;
     cursor: pointer;
@@ -1919,13 +1919,13 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 45px;
-    height: 45px;
-    margin: 0 auto 10px;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 8px;
     background: #e0e0e0;
     border-radius: 50%;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #666;
     transition: all 0.3s ease;
 }
@@ -1937,7 +1937,7 @@ a {
 }
 
 .step-label {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: #666;
     font-weight: 500;
     font-family: 'Georgia', 'Garamond', serif;
