@@ -169,17 +169,22 @@ function validatePage(pageNum, suppressAlert = false) {
     const page = document.getElementById(`page-${pageNum}`);
     const requiredFields = page.querySelectorAll('[required]');
     let isValid = true;
+    const processedRadioGroups = new Set(); // Track processed radio groups
 
     // Validate fields with required attribute
     requiredFields.forEach(field => {
         if (field.type === 'radio') {
-            const radioGroup = document.getElementsByName(field.name);
-            const isChecked = Array.from(radioGroup).some(radio => radio.checked);
-            if (!isChecked) {
-                isValid = false;
-                radioGroup.forEach(radio => radio.classList.add('error'));
-            } else {
-                radioGroup.forEach(radio => radio.classList.remove('error'));
+            // Only process each radio group once
+            if (!processedRadioGroups.has(field.name)) {
+                processedRadioGroups.add(field.name);
+                const radioGroup = page.querySelectorAll(`input[name="${field.name}"]`);
+                const isChecked = Array.from(radioGroup).some(radio => radio.checked);
+                if (!isChecked) {
+                    isValid = false;
+                    radioGroup.forEach(radio => radio.classList.add('error'));
+                } else {
+                    radioGroup.forEach(radio => radio.classList.remove('error'));
+                }
             }
         } else {
             // Check if field is empty
@@ -218,14 +223,19 @@ function validatePage(pageNum, suppressAlert = false) {
                     checkboxes.forEach(cb => cb.classList.remove('error'));
                 }
             } else if (radioGroup) {
-                // At least one radio must be selected
-                const radios = radioGroup.querySelectorAll('input[type="radio"]');
-                const isChecked = Array.from(radios).some(r => r.checked);
-                if (!isChecked) {
-                    isValid = false;
-                    radios.forEach(r => r.classList.add('error'));
-                } else {
-                    radios.forEach(r => r.classList.remove('error'));
+                // Get the name of the first radio in this group
+                const firstRadio = radioGroup.querySelector('input[type="radio"]');
+                if (firstRadio && !processedRadioGroups.has(firstRadio.name)) {
+                    processedRadioGroups.add(firstRadio.name);
+                    // At least one radio must be selected
+                    const radios = radioGroup.querySelectorAll('input[type="radio"]');
+                    const isChecked = Array.from(radios).some(r => r.checked);
+                    if (!isChecked) {
+                        isValid = false;
+                        radios.forEach(r => r.classList.add('error'));
+                    } else {
+                        radios.forEach(r => r.classList.remove('error'));
+                    }
                 }
             }
         }
@@ -264,7 +274,10 @@ function submitToGoogleForms() {
     const savedData = savedDataJSON ? JSON.parse(savedDataJSON) : {};
 
     // Log the saved data for debugging
+    console.log('=== FORM SUBMISSION STARTED ===');
+    console.log('Timestamp:', new Date().toLocaleString());
     console.log('Saved form data:', savedData);
+    console.log('Data keys present:', Object.keys(savedData));
 
     // Prepare form data
     const formData = new FormData();
@@ -278,9 +291,26 @@ function submitToGoogleForms() {
         formData.append('entry.1081316312', savedData.gender || '');
 
         // Page 2 Fields
-        formData.append('entry.453925915', Array.isArray(savedData.goals) ? savedData.goals.join(', ') : (savedData.goals || ''));
+        // For checkbox fields that accept multiple answers, append each value separately
+        if (Array.isArray(savedData.goals)) {
+            savedData.goals.forEach(goal => {
+                formData.append('entry.453925915', goal);
+            });
+        } else if (savedData.goals) {
+            formData.append('entry.453925915', savedData.goals);
+        }
+
         formData.append('entry.292737724', savedData.goalsElaborate || '');
-        formData.append('entry.1884319589', Array.isArray(savedData.challenges) ? savedData.challenges.join(', ') : (savedData.challenges || ''));
+
+        // For challenge checkboxes, append each value separately
+        if (Array.isArray(savedData.challenges)) {
+            savedData.challenges.forEach(challenge => {
+                formData.append('entry.1884319589', challenge);
+            });
+        } else if (savedData.challenges) {
+            formData.append('entry.1884319589', savedData.challenges);
+        }
+
         formData.append('entry.303490720', savedData.challengesElaborate || '');
 
         // Page 3 Fields
@@ -303,35 +333,72 @@ function submitToGoogleForms() {
         // Page 4 Fields
         formData.append('entry.875607148', savedData.whyChange || '');
         formData.append('entry.1113720368', savedData.lifestyleChanges || '');
-        formData.append('entry.819484998', Array.isArray(savedData.oneGoal) ? savedData.oneGoal.join(', ') : (savedData.oneGoal || ''));
+
+        // For oneGoal checkboxes, append each value separately
+        if (Array.isArray(savedData.oneGoal)) {
+            savedData.oneGoal.forEach(goal => {
+                formData.append('entry.819484998', goal);
+            });
+        } else if (savedData.oneGoal) {
+            formData.append('entry.819484998', savedData.oneGoal);
+        }
+
         formData.append('entry.1540798030', savedData.threeMonths || '');
         formData.append('entry.1758599209', savedData.readinessScale || '');
 
         // Log FormData entries for debugging
-        console.log('FormData entries being sent:');
+        console.log('=== FormData entries being sent ===');
+        const formDataArray = [];
         for (let [key, value] of formData.entries()) {
             console.log(`${key}: ${value}`);
+            formDataArray.push({ key, value });
+        }
+        console.log('Total FormData entries:', formDataArray.length);
+
+        // Validate critical fields are present
+        const criticalFields = ['emailAddress', 'entry.569054967', 'entry.1390730019'];
+        const missingFields = criticalFields.filter(field => 
+            !formDataArray.some(item => item.key === field)
+        );
+        if (missingFields.length > 0) {
+            console.warn('WARNING: Missing critical fields:', missingFields);
         }
 
     } catch (error) {
-        console.error('Error preparing form data:', error);
+        console.error('ERROR preparing form data:', error);
+        console.error('Error stack:', error.stack);
+        alert('Error preparing form data. Check console for details.');
+        return;
     }
 
     // Submit using Fetch API (no-cors mode prevents navigation)
+    console.log('=== Submitting to Google Forms ===');
+    console.log('URL:', googleFormURL);
+
     fetch(googleFormURL, {
         method: 'POST',
         body: formData,
         mode: 'no-cors'
+    }).then(response => {
+        console.log('=== FETCH RESPONSE ===');
+        console.log('Status:', response.status);
+        console.log('Status Text:', response.statusText);
+        console.log('Response OK:', response.ok);
+        return response;
     }).then(() => {
-        console.log('Form submitted successfully');
+        console.log('=== SUBMISSION SUCCESS ===');
+        console.log('Form submitted successfully at', new Date().toLocaleString());
         // Clear localStorage after successful submission
         clearFormData();
-
         // Show success message
         showSuccessMessage();
     }).catch((error) => {
-        console.error('Error submitting form:', error);
-        // Still show success message even if there's an error (Google Forms doesn't return proper responses)
+        console.error('=== SUBMISSION ERROR ===');
+        console.error('Fetch error:', error);
+        console.error('Error type:', error.name);
+        console.error('Error message:', error.message);
+        // Still show success message (Google Forms often appears to fail due to CORS)
+        console.warn('Submission may have succeeded despite fetch error. Check Google Forms dashboard.');
         clearFormData();
         showSuccessMessage();
     });
@@ -428,7 +495,12 @@ function loadFormData() {
                 const radio = customForm.querySelector(`input[name="${key}"][value="${data[key]}"]`);
                 if (radio) radio.checked = true;
             } else if (field.type === 'checkbox') {
-                field.checked = true;
+                // For individual checkboxes with IDs
+                if (Array.isArray(data[key])) {
+                    field.checked = data[key].includes(field.value);
+                } else {
+                    field.checked = false;
+                }
             } else {
                 field.value = data[key];
             }

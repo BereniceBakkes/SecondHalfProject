@@ -364,3 +364,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Local debugging guide - not for version control
+DEBUGGING_GUIDE.md
