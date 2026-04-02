@@ -98,6 +98,9 @@ StyleCopReport.xml
 *.svclog
 *.scc
 
+# Agent documentation (for local development only)
+agents.md
+
 # Chutzpah Test files
 _Chutzpah*
 

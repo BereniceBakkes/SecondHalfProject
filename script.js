@@ -165,7 +165,7 @@ function goToPage(pageNum) {
     }
 }
 
-function validatePage(pageNum) {
+function validatePage(pageNum, suppressAlert = false) {
     const page = document.getElementById(`page-${pageNum}`);
     const requiredFields = page.querySelectorAll('[required]');
     let isValid = true;
@@ -231,7 +231,7 @@ function validatePage(pageNum) {
         }
     });
 
-    if (!isValid) {
+    if (!isValid && !suppressAlert) {
         alert('Please fill in all required fields correctly before proceeding.');
     }
 
@@ -271,41 +271,41 @@ function submitToGoogleForms() {
 
     try {
         // Page 1 Fields
-        if (savedData.email) formData.append('emailAddress', savedData.email);
-        if (savedData.fullName) formData.append('entry.569054967', savedData.fullName);
-        if (savedData.contactNumber) formData.append('entry.1390730019', savedData.contactNumber);
-        if (savedData.dateOfBirth) formData.append('entry.1091406177', savedData.dateOfBirth);
-        if (savedData.gender) formData.append('entry.1081316312', savedData.gender);
+        formData.append('emailAddress', savedData.email || '');
+        formData.append('entry.569054967', savedData.fullName || '');
+        formData.append('entry.1390730019', savedData.contactNumber || '');
+        formData.append('entry.1091406177', savedData.dateOfBirth || '');
+        formData.append('entry.1081316312', savedData.gender || '');
 
         // Page 2 Fields
-        if (savedData.goals) formData.append('entry.453925915', Array.isArray(savedData.goals) ? savedData.goals.join(', ') : savedData.goals);
-        if (savedData.goalsElaborate) formData.append('entry.292737724', savedData.goalsElaborate);
-        if (savedData.challenges) formData.append('entry.1884319589', Array.isArray(savedData.challenges) ? savedData.challenges.join(', ') : savedData.challenges);
-        if (savedData.challengesElaborate) formData.append('entry.303490720', savedData.challengesElaborate);
+        formData.append('entry.453925915', Array.isArray(savedData.goals) ? savedData.goals.join(', ') : (savedData.goals || ''));
+        formData.append('entry.292737724', savedData.goalsElaborate || '');
+        formData.append('entry.1884319589', Array.isArray(savedData.challenges) ? savedData.challenges.join(', ') : (savedData.challenges || ''));
+        formData.append('entry.303490720', savedData.challengesElaborate || '');
 
         // Page 3 Fields
-        if (savedData.previousAttempts) formData.append('entry.1778146938', savedData.previousAttempts);
-        if (savedData.triedBefore) formData.append('entry.1282701131', savedData.triedBefore);
-        if (savedData.diet) formData.append('entry.1904904898', savedData.diet);
-        if (savedData.medicalConditions) formData.append('entry.59218978', savedData.medicalConditions);
-        if (savedData.medicalSpecify) formData.append('entry.853010451', savedData.medicalSpecify);
-        if (savedData.prescriptionMeds) formData.append('entry.2117106748', savedData.prescriptionMeds);
-        if (savedData.medRxSpecify) formData.append('entry.140953979', savedData.medRxSpecify);
-        if (savedData.supplements) formData.append('entry.897309947', savedData.supplements);
-        if (savedData.supplementsList) formData.append('entry.793487963', savedData.supplementsList);
-        if (savedData.allergies) formData.append('entry.1282300603', savedData.allergies);
-        if (savedData.allergySpecify) formData.append('entry.1184648343', savedData.allergySpecify);
-        if (savedData.bloodwork) formData.append('entry.412990079', savedData.bloodwork);
-        if (savedData.healthRating) formData.append('entry.441328348', savedData.healthRating);
-        if (savedData.currentWeight) formData.append('entry.263517772', savedData.currentWeight);
-        if (savedData.height) formData.append('entry.1896424265', savedData.height);
+        formData.append('entry.1778146938', savedData.previousAttempts || '');
+        formData.append('entry.1282701131', savedData.triedBefore || '');
+        formData.append('entry.1904904898', savedData.diet || '');
+        formData.append('entry.59218978', savedData.medicalConditions || '');
+        formData.append('entry.853010451', savedData.medicalSpecify || '');
+        formData.append('entry.2117106748', savedData.prescriptionMeds || '');
+        formData.append('entry.140953979', savedData.medRxSpecify || '');
+        formData.append('entry.897309947', savedData.supplements || '');
+        formData.append('entry.793487963', savedData.supplementsList || '');
+        formData.append('entry.1282300603', savedData.allergies || '');
+        formData.append('entry.1184648343', savedData.allergySpecify || '');
+        formData.append('entry.412990079', savedData.bloodwork || '');
+        formData.append('entry.441328348', savedData.healthRating || '');
+        formData.append('entry.263517772', savedData.currentWeight || '');
+        formData.append('entry.1896424265', savedData.height || '');
 
         // Page 4 Fields
-        if (savedData.whyChange) formData.append('entry.875607148', savedData.whyChange);
-        if (savedData.lifestyleChanges) formData.append('entry.1113720368', savedData.lifestyleChanges);
-        if (savedData.oneGoal) formData.append('entry.819484998', Array.isArray(savedData.oneGoal) ? savedData.oneGoal.join(', ') : savedData.oneGoal);
-        if (savedData.threeMonths) formData.append('entry.1540798030', savedData.threeMonths);
-        if (savedData.readinessScale) formData.append('entry.1758599209', savedData.readinessScale);
+        formData.append('entry.875607148', savedData.whyChange || '');
+        formData.append('entry.1113720368', savedData.lifestyleChanges || '');
+        formData.append('entry.819484998', Array.isArray(savedData.oneGoal) ? savedData.oneGoal.join(', ') : (savedData.oneGoal || ''));
+        formData.append('entry.1540798030', savedData.threeMonths || '');
+        formData.append('entry.1758599209', savedData.readinessScale || '');
 
         // Log FormData entries for debugging
         console.log('FormData entries being sent:');
@@ -358,8 +358,8 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.addEventListener('click', function(e) {
                 e.preventDefault();
 
-                // Validate final page
-                if (!validatePage(totalPages)) {
+                // Validate all pages before submission
+                if (!validateAllPages()) {
                     return;
                 }
 
@@ -372,8 +372,8 @@ document.addEventListener('DOMContentLoaded', function() {
         customForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Validate final page
-            if (!validatePage(totalPages)) {
+            // Validate all pages before submission
+            if (!validateAllPages()) {
                 return;
             }
 
@@ -451,6 +451,42 @@ function loadFormData() {
             }
         }
     });
+}
+
+// Validate all 4 pages before submission
+function validateAllPages() {
+    let allPagesValid = true;
+    const invalidPages = [];
+
+    // Validate each page (suppress individual alerts)
+    for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+        if (!validatePage(pageNum, true)) {
+            allPagesValid = false;
+            invalidPages.push(pageNum);
+        }
+    }
+
+    if (!allPagesValid) {
+        const pageNames = {
+            1: 'Personal Information',
+            2: 'Goals',
+            3: 'Background',
+            4: 'Commitment'
+        };
+
+        const invalidPageNames = invalidPages.map(p => pageNames[p]).join(', ');
+        alert(`Please fill in all required fields on the following pages before submitting:\n\n${invalidPageNames}`);
+
+        // Navigate to the first invalid page
+        if (invalidPages.length > 0) {
+            currentPage = invalidPages[0];
+            showPage(currentPage, true);
+        }
+
+        return false;
+    }
+
+    return true;
 }
 
 // Clear form data from localStorage

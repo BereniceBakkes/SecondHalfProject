@@ -1245,6 +1245,9 @@ a {
     align-items: center;
     opacity: 0;
     transform: scale(0.95);
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
 
 .contact-card.animate-in {
@@ -1302,7 +1305,7 @@ a {
     font-size: 1.05rem;
 }
 
-.contact-link:hover {
+.contact-card:hover .contact-link {
     text-decoration: underline;
     color: #15676a;
 }
@@ -2161,6 +2164,7 @@ a {
     cursor: pointer;
     flex-shrink: 0;
     accent-color: #1a7c7d;
+    transition: all 0.2s ease;
 }
 
 .radio-option label,
@@ -2170,6 +2174,19 @@ a {
     font-weight: 400;
     font-size: 1rem;
     color: #333;
+}
+
+/* Error states for radio buttons and checkboxes */
+.radio-option input[type="radio"].error,
+.checkbox-option input[type="checkbox"].error {
+    accent-color: #dc3545;
+    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.3);
+    border-radius: 2px;
+}
+
+.radio-option input[type="radio"].error:focus,
+.checkbox-option input[type="checkbox"].error:focus {
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.4);
 }
 
 /* Scale Group (1-10) */
@@ -2192,6 +2209,7 @@ a {
     height: 20px;
     cursor: pointer;
     accent-color: #1a7c7d;
+    transition: all 0.2s ease;
 }
 
 .scale-option label {
@@ -2200,6 +2218,17 @@ a {
     color: #333;
     cursor: pointer;
     margin: 0;
+}
+
+/* Error state for scale options */
+.scale-option input[type="radio"].error {
+    accent-color: #dc3545;
+    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.3);
+    border-radius: 2px;
+}
+
+.scale-option input[type="radio"].error:focus {
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.4);
 }
 
 /* Gender radio group on page 1 */
