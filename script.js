@@ -564,7 +564,7 @@ function showSuccessMessage() {
     const successHTML = `
         <div class="success-message">
             <div class="success-content">
-                <h2>Thank you for your interest in The Second Half Project.</h2>
+                <p>Thank you for your interest in The Second Half Project.</p>
                 <p>This application helps me understand your current health situation, your goals, and whether this program is the right fit for you.</p>
                 <p>If it is, I will personally contact you to schedule a call and discuss the next steps.</p>
                 <a href="index.html" class="btn btn-primary" style="margin-top: 20px;">Return to Home</a>
