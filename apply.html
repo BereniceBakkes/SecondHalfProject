@@ -121,24 +121,24 @@
                                         <label for="loseWeight">Lose weight</label>
                                     </div>
                                     <div class="checkbox-option">
-                                        <input type="checkbox" id="pickupWeight" name="goals" value="Pick up weight">
-                                        <label for="pickupWeight">Pick up weight</label>
-                                    </div>
-                                    <div class="checkbox-option">
                                         <input type="checkbox" id="bodyComposition" name="goals" value="Improve body composition">
                                         <label for="bodyComposition">Improve body composition</label>
                                     </div>
                                     <div class="checkbox-option">
-                                        <input type="checkbox" id="energy" name="goals" value="Improve energy">
-                                        <label for="energy">Improve energy</label>
-                                    </div>
-                                    <div class="checkbox-option">
-                                        <input type="checkbox" id="hormones" name="goals" value="Balance hormones">
-                                        <label for="hormones">Balance hormones</label>
+                                        <input type="checkbox" id="energy" name="goals" value="Stabilize energy levels">
+                                        <label for="energy">Stabilize energy levels</label>
                                     </div>
                                     <div class="checkbox-option">
                                         <input type="checkbox" id="inflammation" name="goals" value="Reduce inflammation">
                                         <label for="inflammation">Reduce inflammation</label>
+                                    </div>
+                                    <div class="checkbox-option">
+                                        <input type="checkbox" id="mentalClarity" name="goals" value="Enhance mental clarity">
+                                        <label for="mentalClarity">Enhance mental clarity</label>
+                                    </div>
+                                    <div class="checkbox-option">
+                                        <input type="checkbox" id="cravings" name="goals" value="Reduce cravings">
+                                        <label for="cravings">Reduce cravings</label>
                                     </div>
                                     <div class="checkbox-option">
                                         <input type="checkbox" id="overallHealth" name="goals" value="Improve overall health">
@@ -152,47 +152,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="goalsElaborate">Please elaborate shortly on the above</label>
-                                <textarea id="goalsElaborate" name="goalsElaborate" rows="4" placeholder="Your answer..."></textarea>
-                            </div>
-
-                            <div class="form-group">
-                                <label>What health challenges are you currently experiencing? *</label>
-                                <div class="checkbox-group">
-                                    <div class="checkbox-option">
-                                        <input type="checkbox" id="fatigue" name="challenges" value="Fatigue">
-                                        <label for="fatigue">Fatigue</label>
-                                    </div>
-                                    <div class="checkbox-option">
-                                        <input type="checkbox" id="weightGain" name="challenges" value="Weight gain">
-                                        <label for="weightGain">Weight gain</label>
-                                    </div>
-                                    <div class="checkbox-option">
-                                        <input type="checkbox" id="digestive" name="challenges" value="Digestive issues">
-                                        <label for="digestive">Digestive issues</label>
-                                    </div>
-                                    <div class="checkbox-option">
-                                        <input type="checkbox" id="hormonal" name="challenges" value="Hormonal issues">
-                                        <label for="hormonal">Hormonal issues</label>
-                                    </div>
-                                    <div class="checkbox-option">
-                                        <input type="checkbox" id="inflam" name="challenges" value="Inflammation">
-                                        <label for="inflam">Inflammation</label>
-                                    </div>
-                                    <div class="checkbox-option">
-                                        <input type="checkbox" id="brainfog" name="challenges" value="Poor mental clarity/Brain fog">
-                                        <label for="brainfog">Poor mental clarity/Brain fog</label>
-                                    </div>
-                                    <div class="checkbox-option">
-                                        <input type="checkbox" id="challengesOther" name="challenges" value="Other">
-                                        <label for="challengesOther">Other</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="challengesElaborate">Please elaborate shortly on the above</label>
-                                <textarea id="challengesElaborate" name="challengesElaborate" rows="4" placeholder="Your answer..."></textarea>
+                                <label for="challenges">What are the biggest health/body challenges you are currently facing? *</label>
+                                <textarea id="challenges" name="challenges" rows="4" placeholder="Your answer..." required></textarea>
                             </div>
                         </div>
 
@@ -387,36 +348,6 @@
                             </div>
 
                             <div class="form-group">
-                                <label>If you had to choose health goal(s) right now, what would it be? *</label>
-                                <div class="checkbox-group">
-                                    <div class="checkbox-option">
-                                        <input type="checkbox" id="goalEnergy" name="oneGoal" value="Energy restoration">
-                                        <label for="goalEnergy">Energy restoration</label>
-                                    </div>
-                                    <div class="checkbox-option">
-                                        <input type="checkbox" id="goalWeight" name="oneGoal" value="Weight/body composition">
-                                        <label for="goalWeight">Weight/body composition</label>
-                                    </div>
-                                    <div class="checkbox-option">
-                                        <input type="checkbox" id="goalDigestive" name="oneGoal" value="Digestive healing">
-                                        <label for="goalDigestive">Digestive healing</label>
-                                    </div>
-                                    <div class="checkbox-option">
-                                        <input type="checkbox" id="goalHormonal" name="oneGoal" value="Hormonal balance">
-                                        <label for="goalHormonal">Hormonal balance</label>
-                                    </div>
-                                    <div class="checkbox-option">
-                                        <input type="checkbox" id="goalClarity" name="oneGoal" value="Mental clarity">
-                                        <label for="goalClarity">Mental clarity</label>
-                                    </div>
-                                    <div class="checkbox-option">
-                                        <input type="checkbox" id="goalOther2" name="oneGoal" value="Other">
-                                        <label for="goalOther2">Other</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
                                 <label for="threeMonths">If this program was successful, what would have changed in 3 months? What would your life look like? *</label>
                                 <textarea id="threeMonths" name="threeMonths" rows="4" placeholder="Your answer..." required></textarea>
                             </div>
@@ -466,6 +397,26 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label for="anythingElse">Is there anything else you'd like to add or mention?</label>
+                                <textarea id="anythingElse" name="anythingElse" rows="4" placeholder="Your answer..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="disclaimer-label"><strong>Disclaimer / Consent</strong></label>
+                                <p class="disclaimer-text">By submitting this application, I acknowledge that The Second Half Project is a health coaching service and does not replace medical advice, diagnosis, or treatment from a qualified healthcare professional. Any guidance provided is for educational and lifestyle-support purposes only. I understand that individual results may vary, that I am responsible for my own health choices, and that I should seek appropriate medical advice where needed.</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Do you acknowledge and agree to the above disclaimer? *</label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="disclaimerYes" name="disclaimer" value="Yes, I have read and understood the above disclaimer." required>
+                                        <label for="disclaimerYes">Yes, I have read and understood the above disclaimer.</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Navigation Buttons -->
@@ -487,9 +438,7 @@
 
                         <!-- Page 2 Fields -->
                         <input type="hidden" name="entry.453925915" id="gf-goals">
-                        <input type="hidden" name="entry.292737724" id="gf-goalsElaborate">
-                        <input type="hidden" name="entry.1884319589" id="gf-challenges">
-                        <input type="hidden" name="entry.303490720" id="gf-challengesElaborate">
+                        <input type="hidden" name="entry.303490720" id="gf-challenges">
 
                         <!-- Page 3 Fields -->
                         <input type="hidden" name="entry.1778146938" id="gf-previousAttempts">
@@ -511,9 +460,10 @@
                         <!-- Page 4 Fields -->
                         <input type="hidden" name="entry.875607148" id="gf-whyChange">
                         <input type="hidden" name="entry.1113720368" id="gf-lifestyleChanges">
-                        <input type="hidden" name="entry.819484998" id="gf-oneGoal">
                         <input type="hidden" name="entry.1540798030" id="gf-threeMonths">
                         <input type="hidden" name="entry.1758599209" id="gf-readinessScale">
+                        <input type="hidden" name="entry.1371058970" id="gf-anythingElse">
+                        <input type="hidden" name="entry.285206051" id="gf-disclaimer">
                     </form>
                 </div>
 

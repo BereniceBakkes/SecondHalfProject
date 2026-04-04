@@ -300,18 +300,8 @@ function submitToGoogleForms() {
             formData.append('entry.453925915', savedData.goals);
         }
 
-        formData.append('entry.292737724', savedData.goalsElaborate || '');
-
-        // For challenge checkboxes, append each value separately
-        if (Array.isArray(savedData.challenges)) {
-            savedData.challenges.forEach(challenge => {
-                formData.append('entry.1884319589', challenge);
-            });
-        } else if (savedData.challenges) {
-            formData.append('entry.1884319589', savedData.challenges);
-        }
-
-        formData.append('entry.303490720', savedData.challengesElaborate || '');
+        // Health challenges text field
+        formData.append('entry.303490720', savedData.challenges || '');
 
         // Page 3 Fields
         formData.append('entry.1778146938', savedData.previousAttempts || '');
@@ -332,19 +322,22 @@ function submitToGoogleForms() {
 
         // Page 4 Fields
         formData.append('entry.875607148', savedData.whyChange || '');
-        formData.append('entry.1113720368', savedData.lifestyleChanges || '');
 
-        // For oneGoal checkboxes, append each value separately
-        if (Array.isArray(savedData.oneGoal)) {
-            savedData.oneGoal.forEach(goal => {
-                formData.append('entry.819484998', goal);
+        // Lifestyle selector (checkboxes)
+        if (Array.isArray(savedData.lifestyleChanges)) {
+            savedData.lifestyleChanges.forEach(change => {
+                formData.append('entry.1113720368', change);
             });
-        } else if (savedData.oneGoal) {
-            formData.append('entry.819484998', savedData.oneGoal);
+        } else if (savedData.lifestyleChanges) {
+            formData.append('entry.1113720368', savedData.lifestyleChanges);
         }
 
         formData.append('entry.1540798030', savedData.threeMonths || '');
         formData.append('entry.1758599209', savedData.readinessScale || '');
+
+        // New fields in Page 4
+        formData.append('entry.1371058970', savedData.anythingElse || '');
+        formData.append('entry.285206051', savedData.disclaimer || '');
 
         // Log FormData entries for debugging
         console.log('=== FormData entries being sent ===');
@@ -571,9 +564,9 @@ function showSuccessMessage() {
     const successHTML = `
         <div class="success-message">
             <div class="success-content">
-                <h2>Application Submitted Successfully!</h2>
-                <p>Thank you for applying to the Second Half Project.</p>
-                <p>We've received your application and will review it shortly.</p>
+                <h2>Thank you for your interest in The Second Half Project.</h2>
+                <p>This application helps me understand your current health situation, your goals, and whether this program is the right fit for you.</p>
+                <p>If it is, I will personally contact you to schedule a call and discuss the next steps.</p>
                 <a href="index.html" class="btn btn-primary" style="margin-top: 20px;">Return to Home</a>
             </div>
         </div>
