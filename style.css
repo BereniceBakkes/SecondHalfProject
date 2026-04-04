@@ -1660,6 +1660,7 @@ a {
     .about-image img {
         width: 100%;
         max-width: 400px;
+        margin-top: 0;
     }
 
     .about-content p {
