@@ -265,6 +265,7 @@ function getRadioValue(name) {
 // Submit the collected data to Google Forms
 function submitToGoogleForms() {
     const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSdHhfg73LRpx8OR0kXLFtawCSfBRHEc7cBJQOLy2wjm5SmC0g/formResponse';
+    const backupFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSdDaaJMHSHnGsIMFzrlc4si2QFuGraIBZsXkHKgThe21sb9Kg/formResponse';
 
     // First, ensure all form data is saved to localStorage
     saveFormData();
@@ -279,8 +280,11 @@ function submitToGoogleForms() {
     console.log('Saved form data:', savedData);
     console.log('Data keys present:', Object.keys(savedData));
 
-    // Prepare form data
+    // Prepare form data for main form
     const formData = new FormData();
+
+    // Prepare form data for backup form (email and name only)
+    const backupFormData = new FormData();
 
     try {
         // Page 1 Fields
@@ -364,34 +368,64 @@ function submitToGoogleForms() {
         return;
     }
 
+    // Prepare backup form data (email, name, and contact number)
+    try {
+        backupFormData.append('entry.1783116103', savedData.email || '');
+        backupFormData.append('entry.1844385860', savedData.fullName || '');
+        backupFormData.append('entry.1956881663', savedData.contactNumber || '');
+
+        console.log('=== Backup FormData entries ===');
+        for (let [key, value] of backupFormData.entries()) {
+            console.log(`${key}: ${value}`);
+        }
+    } catch (error) {
+        console.error('ERROR preparing backup form data:', error);
+    }
+
     // Submit using Fetch API (no-cors mode prevents navigation)
-    console.log('=== Submitting to Google Forms ===');
+    console.log('=== Submitting to Main Google Form ===');
     console.log('URL:', googleFormURL);
 
+    // Submit to main form
     fetch(googleFormURL, {
         method: 'POST',
         body: formData,
         mode: 'no-cors'
     }).then(response => {
-        console.log('=== FETCH RESPONSE ===');
+        console.log('=== MAIN FORM FETCH RESPONSE ===');
         console.log('Status:', response.status);
         console.log('Status Text:', response.statusText);
-        console.log('Response OK:', response.ok);
+        return response;
+    }).catch((error) => {
+        console.error('=== MAIN FORM SUBMISSION ERROR ===');
+        console.error('Fetch error:', error);
+    });
+
+    // Submit to backup form (email & name only)
+    console.log('=== Submitting to Backup Google Form ===');
+    console.log('URL:', backupFormURL);
+
+    fetch(backupFormURL, {
+        method: 'POST',
+        body: backupFormData,
+        mode: 'no-cors'
+    }).then(response => {
+        console.log('=== BACKUP FORM FETCH RESPONSE ===');
+        console.log('Status:', response.status);
+        console.log('Status Text:', response.statusText);
         return response;
     }).then(() => {
         console.log('=== SUBMISSION SUCCESS ===');
-        console.log('Form submitted successfully at', new Date().toLocaleString());
+        console.log('Both forms submitted successfully at', new Date().toLocaleString());
         // Clear localStorage after successful submission
         clearFormData();
         // Show success message
         showSuccessMessage();
     }).catch((error) => {
-        console.error('=== SUBMISSION ERROR ===');
+        console.error('=== BACKUP FORM SUBMISSION ERROR ===');
         console.error('Fetch error:', error);
-        console.error('Error type:', error.name);
-        console.error('Error message:', error.message);
         // Still show success message (Google Forms often appears to fail due to CORS)
-        console.warn('Submission may have succeeded despite fetch error. Check Google Forms dashboard.');
+        console.warn('Submissions may have succeeded despite fetch error. Check Google Forms dashboard.');
         clearFormData();
         showSuccessMessage();
     });

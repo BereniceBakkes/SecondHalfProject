@@ -427,7 +427,7 @@
                         </div>
                     </form>
 
-                    <!-- Hidden form to submit to Google Forms -->
+                    <!-- Hidden form to submit to Google Forms (Main Form) -->
                     <form id="googleFormSubmit" method="POST" action="https://docs.google.com/forms/d/e/1FAIpQLSdHhfg73LRpx8OR0kXLFtawCSfBRHEc7cBJQOLy2wjm5SmC0g/formResponse" style="display: none;">
                         <!-- Page 1 Fields -->
                         <input type="hidden" name="emailAddress" id="gf-email">
@@ -464,6 +464,13 @@
                         <input type="hidden" name="entry.1758599209" id="gf-readinessScale">
                         <input type="hidden" name="entry.1371058970" id="gf-anythingElse">
                         <input type="hidden" name="entry.285206051" id="gf-disclaimer">
+                    </form>
+
+                    <!-- Backup hidden form to submit to Google Forms (Email, Name & Contact Number) -->
+                    <form id="googleFormBackupSubmit" method="POST" action="https://docs.google.com/forms/d/e/1FAIpQLSdDaaJMHSHnGsIMFzrlc4si2QFuGraIBZsXkHKgThe21sb9Kg/formResponse" style="display: none;">
+                        <input type="hidden" name="entry.1783116103" id="bf-email">
+                        <input type="hidden" name="entry.1844385860" id="bf-fullName">
+                        <input type="hidden" name="entry.1956881663" id="bf-contactNumber">
                     </form>
                 </div>
 
